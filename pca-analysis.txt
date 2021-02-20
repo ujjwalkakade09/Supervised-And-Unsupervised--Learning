@@ -1,0 +1,40 @@
+dataset= load('sparrows.dat');
+Labels= load('sparrows_labels.dat');
+addpath netlab3_3
+m1=mean(dataset);
+st=std(dataset);
+norm = (dataset-m1);
+norm1= (norm./st);
+[pcvals,pcvecs] = pca(norm1);
+projdata=norm1*pcvecs(:,1:2);
+figure(1)
+hold on;
+h1=plot(projdata(Labels==0,1),projdata(Labels==0,2),'rx')
+h2=plot(projdata(Labels==1,1),projdata(Labels==1,2),'bo')
+set(gca, 'Box','on');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+x=[-2 2; -4 -4; 4 4; 2 -2; 0 0];
+norm=mean(x);
+sigma=cov(x);
+[eigvec,eigval] = eig(sigma);
